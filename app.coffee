@@ -1,8 +1,5 @@
-fs = require('fs')
-node_static = require('node-static')
- 
-file = new(node_static.Server)('./public')
-server = require('http').createServer (request, response)->
-  request.addListener 'end', ->
-    file.serve request, response
-server.listen(3789)
+http = require('http')
+ecstatic = require('ecstatic')
+
+http.createServer(ecstatic root:"#{__dirname}/public",showDir:true,autoIndex:true).listen(8080)
+console.log('Listening on :8080')
